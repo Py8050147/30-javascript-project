@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password-genrator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #fff;
+        }
+
+        body{
+            min-height: 100vh;
+            background-color: #000000;
+        }
+
+        .container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            
+        }
+        h1{
+            text-align: center;
+            color: #fffdfd4b;
+            font-style: italic;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        .box{
+            min-width: 350px;
+            border: 1px solid red;
+            transform: translate(-10%, 50%);
+            padding: 12px;
+            background-color: rgba(0, 0, 255, 0.507);
+            height: 350px;
+        }
+
+        .getInputPassword{
+            width: 100%;
+            height: 40px;
+            display: block;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid black;
+            outline: none;
+            margin-bottom: 18px;
+            background-color: #ffffffe6;
+            color: black;
+        }
+        
+
+        .total-char,
+        .upperValueBox,
+        .lowerValueBox,
+        .numberValueBox,
+        .symbolValueBox
+        {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 18px;
+        }
+
+        .total-char span,
+        .upperValueBox span,
+        .lowerValueBox span,
+        .numberValueBox span,
+        .symbolValueBox span{
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .total-char input{
+            color: black;
+            font-weight: 700;
+        }
+
+        .upperValueBox input,
+        .lowerValueBox input,
+        .numberValueBox input,
+        .symbolValueBox input{
+            width: 20px;
+        }
+
+        .btn,
+        .btn-copy
+        {
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            padding: 3px 0;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .btn-copy{
+            background-color: #fff;
+            color: black;
+            transition: background-color 0.3s;
+        }
+
+        .btn-copy.copied{
+            background-color: chartreuse;
+        }
+
+        .button-div{
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div> <h1>Password genrator</h1></div>
+            <div class="get-password">
+                <span class="getInputPassword"></span>
+            </div>
+            <div class="total-char">
+                <span>Password</span>
+                <input type="number" class="totalChar" max="15" min="4" value="10">
+            </div>
+            <div class="upperValueBox">
+                <span>upperValue</span>
+                <input type="checkbox" class="upperValue" >
+            </div>
+            <div class="lowerValueBox">
+                <span>lowerValue</span>
+                <input type="checkbox" class="lowerValue" >
+            </div>
+            <div class="numberValueBox">
+                <span>numberValue</span>
+                <input type="checkbox" class="numberValue" >
+            </div>
+            <div class="symbolValueBox">
+                <span>symbolValue</span>
+                <input type="checkbox" class="symbolValue">
+            </div>
+
+               <div class="button-div">
+                <button type="button" class="btn">submit</button>
+               <button type="button" class="btn-copy">Copy</button>
+               </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

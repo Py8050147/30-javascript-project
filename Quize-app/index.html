@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quize-App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="question"></h1>
+            <ul class="options"></ul>
+            <button type="button" class="submit">Submit</button>
+            <div class="result"></div>
+        </div>
+    </div>
+
+    <script>
+
+        let currentQuestion = 0
+        let score = 0
+        const quizeData = [
+        {
+            question: "what is the capital of france",
+            options: ["Paris", "Landon", "Berlin", "Rame"],
+            correctAnswer : 0
+        },
+        {
+            question: "what is the capital of Bihar",
+            options: ["Paris", "Landon", "Patna", "Rame"],
+            correctAnswer : 2
+        },
+        {
+            question: "what is the largest planet in our solar system",
+            options: ["Earth", "Saturn", "Jupiter", "Uranus"],
+            correctAnswer : 2
+        }
+        ]
+
+
+        function displayQuestion()  {
+            const questionElement = document.querySelector(".question")
+            const optionsElement = document.querySelector(".options")
+            const currentQuestionData = quizeData[currentQuestion]
+            questionElement.textContent = currentQuestionData.question
+            optionsElement.innerHTML = ''
+            
+            currentQuestionData.options.forEach((option, index) => { 
+                const optionElement = document.createElement("li")
+                optionElement.textContent = option
+                optionElement.style.cursor = 'pointer'
+                optionElement.addEventListener('click',() => {
+                   checkAnswer(index)
+                })
+
+                optionsElement.append(optionElement)
+                
+            })
+            
+        }
+
+        function checkAnswer (selectedOptions) {
+            
+            const currentQuestionData = quizeData[currentQuestion]
+            console.log(selectedOptions === currentQuestionData.correctAnswer)
+            if(selectedOptions === currentQuestionData.correctAnswer){
+                score++
+            }
+            displayResult()
+            
+        }
+
+        function nextQuestion (){
+            const submit = document.querySelector(".submit")
+            submit.addEventListener('click', () => {
+                console.log(currentQuestion++)
+                displayQuestion()
+               
+            })
+
+        }
+
+        function displayResult () {
+            const resultElement = document.querySelector(".result")
+           resultElement.textContent = `your score is ${score} out of ${quizeData.length}`
+        }
+
+        nextQuestion()
+        displayQuestion()
+        
+    </script>
+</body>
+</html>

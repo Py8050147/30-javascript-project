@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        .Box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .row{
+            padding: 10px;
+            font-size: 20px;
+            border: 1px solid red;
+        }
+        .col{
+            font-size: 20px;
+            border: 1px solid red;
+            padding: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="conatiner">
+        <div class="Box">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const cols = document.querySelectorAll(".col")
+        let currentPlayer = 'x'
+
+        function checkWinner () {
+            // Check rows
+            const winner = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+            ]
+            for (let i = 0; i < winner.length; i++) {
+                const [a, b, c] = winner[i]
+                if( cols[a].textContent &&
+                    cols[a].textContent === cols[b].textContent
+                     && 
+                     cols[a].textContent === cols[c].textContent){
+                    alert(`${cols[a].textContent} is the winner!`);
+                    disableAllCells()
+                   return
+                }
+
+        }
+        if([...cols].every((col) => col.textContent)){
+            alert('Its a draw!')
+        }
+    }
+
+    function disableAllCells() {
+        cols.forEach(col => col.classList.add('disabled'));
+    }
+        
+        cols.forEach((col) => {
+            col.addEventListener('click', () => {
+                if (!col.textContent) {
+                    col.textContent = currentPlayer;
+                    currentPlayer = currentPlayer === "x" ? "o" : "x";
+                    checkWinner();
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>

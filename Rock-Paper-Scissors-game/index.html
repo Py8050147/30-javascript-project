@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Rock-Paper-Scissors Game</h1>
+            <button type="button" class="Rock">Rock</button>
+            <button type="button" class="Paper">Paper</button>
+            <button type="button" class="Scissors">Scissors</button>
+            <p class="result"></p>
+        </div>
+
+    </div>
+
+    <script>
+        const rock = document.querySelector('.Rock')
+        const paper = document.querySelector('.Paper')
+        const scissors = document.querySelector('.Scissors')
+        const resultElement = document.querySelector('.result')
+
+        function playGround(playerChoice) {
+            const computerChoice = getComputerChoice()
+            const result = determineWinner(playerChoice, computerChoice)
+            resultDisplay(result, playerChoice, computerChoice)
+        }
+
+        function getComputerChoice () {
+            const choices = ['rock', 'paper', 'scissors']
+            return choices[Math.floor(Math.random() * choices.length )]
+        }
+
+        function determineWinner(playerChoice, computerChoice){
+            if(playerChoice === computerChoice){
+                return tie
+            }
+            else if(
+                playerChoice === 'rock' && computerChoice === 'scissors' ||
+                playerChoice === 'paper' && computerChoice === 'rock'  ||
+                playerChoice === 'scissors' && computerChoice === 'paper'
+            ){
+                return 'win'
+
+            }else{
+                return 'lose'
+            }
+
+        }
+
+        function resultDisplay(result, computerChoice, playerChoice){
+             let message;
+             if(result === 'win'){
+                message = `you win! ${playerChoice} beats ${computerChoice}`
+             }
+             else if(result === 'lose'){
+                message = `you lose! ${computerChoice} beats ${playerChoice}`
+             }
+             else{
+                message = `its a tie you both chode  ${playerChoice}`
+             }
+
+             resultElement.textContent = message
+        }
+
+        rock.addEventListener('click', () =>  playGround('rock'))
+        paper.addEventListener('click', () => playGround('paper'))
+        scissors.addEventListener('click', () =>  playGround('scissors'))
+    </script>
+</body>
+</html>

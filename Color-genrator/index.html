@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color-genrator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            min-height: 100vh;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+
+        .box{
+            margin-top: 15%;
+            transform: translate(-50%, 50%);
+        }
+
+        .box-value{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn{
+            width: 100px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="box-value"></div>
+            <button type="button" class="btn">get</button>
+
+        </div>
+    </div>
+
+    <script>
+        const boxValue = document.querySelector('.box-value')
+        const genrateRndomColor = (min, max) => {
+            return min + Math.floor(Math.random() * (max - min + 1))
+        }
+
+        const generateColorcode = () => {
+            const red = genrateRndomColor(0, 255)
+            const green = genrateRndomColor(0, 255)
+            const blue = genrateRndomColor(0, 255)
+            return `rgb(${red}, ${green}, ${blue})`
+        }
+        const getValueColor = () => {
+            randomColor = generateColorcode()
+            boxValue.style.backgroundColor = randomColor
+            boxValue.textContent = randomColor
+        }
+
+        document.querySelector('.btn').addEventListener('click', getValueColor)
+    </script>
+</body>
+</html>
